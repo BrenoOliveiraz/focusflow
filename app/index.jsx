@@ -18,8 +18,8 @@ export default function Index() {
           </Text>
         </Pressable>
       </View>
-      <View>
-        <Text>
+      <View style={styles.footer}>
+        <Text style={styles.footerText}>
           Foco é poder. Crie, produza, descanse.
         </Text>
       </View>
@@ -61,5 +61,13 @@ const styles = StyleSheet.create({
     color: '#021123',
     fontSize: 18,
 
+  },
+  footer: {
+    width: '80%'
+  },
+  footerText: {
+    textAlign: "center",
+    color: "#98A0A8",
+    fontSize: 12.5
   }
 })
