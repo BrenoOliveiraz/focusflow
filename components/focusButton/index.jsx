@@ -1,10 +1,12 @@
 
 import { View, Text, Pressable, StyleSheet } from 'react-native'
-export default function FocusButton() {
+export default function FocusButton({onPress, title}) {
   return (
-        <Pressable style={styles.button}>
+        <Pressable
+        onPress={onPress}
+        style={styles.button}>
           <Text style={styles.buttonText}>
-            Começar
+            {title}
           </Text>
         </Pressable>
   )

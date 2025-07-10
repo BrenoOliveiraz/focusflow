@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import FocusButton from '../components/focusButton'
 import ActionButton from '../components/actionButton'
@@ -32,6 +32,22 @@ export default function Index() {
 
   const [timerType, setTimerType] = useState(pomodoro[0])
 
+  const timerRef = useRef(null)
+
+  const toogleTimer = () => {
+    if (timerRef.current) {
+      //pausar
+      clearInterval(timerRef.current)
+      return
+    }
+
+    const id = setInterval(() => {
+
+    }, 1000
+    )
+    timerRef.current = id
+  }
+
 
   return (
     <View
@@ -51,9 +67,10 @@ export default function Index() {
           ))}
         </View>
         <Timer
+         
           totalSeconds={timerType.initialValue}
         />
-        <FocusButton />
+        <FocusButton  title={timerRef.current ? 'Pausar' : 'Começar'} onPress={toogleTimer} />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>
