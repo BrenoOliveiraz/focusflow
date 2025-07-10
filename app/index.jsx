@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import FocusButton from '../components/focusButton'
+import ActionButton from '../components/actionButton'
+import Timer from '../components/timer'
 
 
 const pomodoro = [
@@ -27,9 +30,7 @@ const pomodoro = [
 
 export default function Index() {
 
-  const [timerType, setTimerType] = useState(pomodoro[1])
-
-
+  const [timerType, setTimerType] = useState(pomodoro[0])
 
 
   return (
@@ -39,21 +40,20 @@ export default function Index() {
       <Image source={timerType.image} />
       <View style={styles.actions} >
         <View style={styles.context}>
-          <Pressable style={styles.contextButtonActive}>
-            <Text style={styles.contextButtonText}>
-              Pausa
-            </Text>
-          </Pressable>
-        </View>
+          {pomodoro.map(p => (
+            <ActionButton
+              key={p.id}
+              active={timerType.id === p.id}
+              display={p.display}
+              onPress={() => setTimerType(p)}
+            />
 
-        <Text style={styles.timer}>
-          {new Date(timerType.initialValue * 1000).toLocaleTimeString('pt-BR', { minute: '2-digit', second: '2-digit' })}
-        </Text>
-        <Pressable style={styles.button}>
-          <Text style={styles.buttonText}>
-            Começar
-          </Text>
-        </Pressable>
+          ))}
+        </View>
+        <Timer
+          totalSeconds={timerType.initialValue}
+        />
+        <FocusButton />
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>
@@ -86,35 +86,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: "center"
   },
-  contextButtonActive: {
-    backgroundColor: '#144480',
-    borderRadius: 8,
-  }
-  ,
-  contextButtonText: {
-    fontSize: 12.5,
-    color: '#fff',
-    padding: 8
 
-  },
-  timer: {
-    fontSize: 54,
-    color: '#fff',
-    fontWeight: 'bold',
-    textAlign: 'center'
-
-  },
-  button: {
-    backgroundColor: '#B872FF',
-    borderRadius: 32,
-    padding: 8
-  },
-  buttonText: {
-    textAlign: "center",
-    color: '#021123',
-    fontSize: 18,
-
-  },
   footer: {
     width: '80%'
   },
