@@ -1,12 +1,19 @@
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar'; // Importe o StatusBar
+import { StatusBar } from 'expo-status-bar'; 
 
 export default function Layout() {
   return (
     <>
-
-      <Stack screenOptions={{ headerShown: false }} />
-
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="index" 
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="pomodoro"
+          options={{ title: 'Perfil' }}
+        />
+      </Stack>
 
       <StatusBar style="light" />
     </>
