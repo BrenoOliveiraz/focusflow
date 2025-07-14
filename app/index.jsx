@@ -1,6 +1,7 @@
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import FocusButton from '../components/focusButton'
 import Footer from '../components/footer'
+import { router } from 'expo-router';
 
 
 
@@ -30,7 +31,7 @@ export default function Index() {
           resizeMode="contain"
         />
 
-        <FocusButton title='Quero Iniciar!' />
+        <FocusButton onPress={()=> router.replace('/pomodoro')} title='Quero Iniciar!' />
       </View>
 
       <Footer />
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
   },
   
 logo: {
-  width: 260,  // pixels
-  height: 80,  // pixels
+  width: 260,  
+  height: 80,   
 
   alignSelf: 'center',
   marginBottom: 16,
