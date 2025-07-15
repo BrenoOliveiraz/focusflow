@@ -1,12 +1,12 @@
 
 import { View, Text, Pressable, StyleSheet } from 'react-native'
-export default function FocusButton({onPress, title, icons}) {
+export default function FocusButton({onPress, title, icons, outline}) {
   return (
         <Pressable
         onPress={onPress}
-        style={styles.button}>
+        style={[styles.button, outline && styles.outlineButton]}>
           {icons}
-          <Text style={styles.buttonText}>
+          <Text style={[styles.buttonText, outline &&styles.outlineButtonText]}>
             {title}
           </Text>
         </Pressable>
@@ -25,6 +25,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  outlineButton: {
+    backgroundColor: 'transparent',
+    borderColor: '#B872FF',
+    borderWidth: 2,
+  },
+  outlineButtonText:{
+    color: "#B872FF"
+  },
+
   buttonText: {
     textAlign: "center",
     color: '#021123',
