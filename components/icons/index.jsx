@@ -50,3 +50,12 @@ export const IconPlus = ({ size = 20, color = "#B872FF" }) => (
   />
 );
 
+// 💾 Save (salvar)
+export const IconSave = ({ size = 20, color = "black" }) => (
+  <Feather
+    name="save"
+    size={size}
+    color={color}
+  />
+);
+
