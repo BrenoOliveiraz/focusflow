@@ -39,7 +39,7 @@ export default function AddTasks() {
           numberOfLines={10}
           multiline={true}
           value={description}
-          onChange={setDescription}
+          onChangeText={setDescription}
         />
 
         <View style={styles.actions}>

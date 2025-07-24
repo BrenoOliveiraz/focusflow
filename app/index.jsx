@@ -40,6 +40,7 @@ export default function Index() {
 }
 
 const { width } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
