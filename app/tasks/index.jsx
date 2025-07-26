@@ -1,3 +1,4 @@
+
 import { View, Text, StyleSheet, FlatList } from 'react-native'
 
 import TaskItem from '../../components/taskItem'
@@ -8,7 +9,10 @@ import useTaskContext from '../../components/context/useTaskContext'
 
 export default function Tasks() {
 
-  const { tasks } = useTaskContext()
+  const { tasks, deleteTask, toggleTaskCompleted,  } = useTaskContext()
+
+  
+
 
 
   return (
@@ -20,7 +24,13 @@ export default function Tasks() {
 
           <FlatList
             data={tasks}
-            renderItem={({ item }) => <TaskItem completed={item.completed} text={item.description} key={item.id} />}
+            renderItem={({ item }) => <TaskItem 
+            completed={item.completed}
+             text={String(item.description || '')} 
+             onPressDelete={()=>deleteTask(item.id)}
+             onToggleComplete={()=> toggleTaskCompleted(item.id)}
+             onPressEdit={()=> router.navigate(`/edit-task/${item.id}`)}
+             />}
             keyExtractor={item => item.id}
             ItemSeparatorComponent={() => <View style={{ height: 8 }} />}
             ListHeaderComponent={() => <Text style={styles.text}>Lista de Tarefas</Text>}
@@ -31,8 +41,9 @@ export default function Tasks() {
                   icons={<IconPlus />}
                   outline
                   onPress={() => router.navigate('/add-task')}
+                />
 
-                /> </View>}
+              </View>}
           />
         </View>
 

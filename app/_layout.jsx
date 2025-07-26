@@ -42,6 +42,7 @@ export default function Layout() {
             }} />
           <Drawer.Screen name='pomodoro' options={{ drawerLabel: 'Timer', title: "" }} />
           <Drawer.Screen name='tasks/index' options={{ drawerLabel: 'Lista de Tarefas', title: "" }} />
+          <Drawer.Screen name='edit-task/[id]' options={{  drawerItemStyle: { display: 'none' }, drawerLabel: 'Editar Tarefas', title: ' ' }} />
 
 
 
